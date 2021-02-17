@@ -15,7 +15,7 @@ npm i https://github.com/PretendoNetwork/indexed-image-converter
 
 ## Supported functionality:
 - [x] Image->Indexed
-- [ ] Indexed->Image
+- [x] Indexed->Image
 
 # Example
 ## Convert a PNG image to an indexed image
@@ -28,7 +28,7 @@ const { toIndexed } = require('indexed-image-converter');
 
 	const converted = await toIndexed(png); // convert image to indexed BMP style image
 
-	fs.writeFileSync('./image.data', converted); // image.datacan be loaded into GIMP
+	fs.writeFileSync('./image.data', converted); // image.data can be loaded into GIMP
 
 	// When loading into GIMP use these settings:
 	// - "indexed" image type
@@ -37,4 +37,20 @@ const { toIndexed } = require('indexed-image-converter');
 	// - "BMP Style" palette type
 	// - select the same .data file for the palette
 })();
+```
+
+## Convert a indexed image data to PNG
+```js
+const fs = require('fs');
+const { toImage } = require('indexed-image-converter');
+
+const data = fs.readFileSync('./image.data'); // read the indexed image data
+const width = 854; // WiiU gamepad width
+const height = 400; // WiiU gamepad width
+const type = 'png'; // image type to convert to (supports png, gif, tif, bmp, jpg)
+
+const png = toImage(data, width, height, type); // convert indexed image to PNG
+
+fs.writeFileSync('./image.png', png); // save disk
+
 ```

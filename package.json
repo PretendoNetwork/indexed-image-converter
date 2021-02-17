@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "image-encode": "^1.3.1",
     "image-palette": "^2.1.0",
     "image-pixels": "^2.2.2"
   },
